@@ -1,4 +1,10 @@
+
++3
+-1
+
 import '../Card.css';
+
+const AVATAR_FEMALE = `${import.meta.env.BASE_URL}assets/images/avatar-femail.png`;
 
 export default function BlogCard({ image, category, title, description, author }) {
   return (
@@ -15,7 +21,8 @@ export default function BlogCard({ image, category, title, description, author }
         <p className="card__desc">{description}</p>
 
         <div className="card__author">
-          <img className="avatar" src="/public/assets/images/avatar-femail.png" alt={author} loading="lazy" />
+          <img className="avatar" src="/assets/images/avatar-femail.png" alt={author} loading="lazy" />
+          <img className="avatar" src={AVATAR_FEMALE} alt={author} loading="lazy" />
           <div className="author__box">
             <span className="author__name">{author}</span>
           </div>
