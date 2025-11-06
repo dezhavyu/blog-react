@@ -1,0 +1,114 @@
+:root {
+  --bg: #f5f7fb;
+  --card-bg: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #f59e0b;
+  --accent-ink: #78350f;
+  --ring: #2563eb;
+  --radius: 16px;
+  --shadow: 0 10px 25px rgba(2, 6, 23, .08);
+  --shadow-hover: 0 14px 35px rgba(2, 6, 23, .12);
+  --max-card: 350px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #f5f5dc;
+    --card-bg: #ffffff;
+    --text: #000000;
+    --muted: #94a3b8;
+    --accent: #fbbf24;
+    --accent-ink: #1f2937;
+    --ring: #60a5fa;
+    --shadow: 0 10px 25px rgba(0,0,0,.4);
+    --shadow-hover: 0 14px 40px rgba(0,0,0,.55);
+  }
+}
+
+* { box-sizing: border-box; }
+
+.card {
+
+  height: 100%;
+  max-width: var(--max-card);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border: 1px solid rgba(15, 23, 42, .06);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.card:focus-within,
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+
+.card__image-wrap {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, rgba(251, 191, 36, .25), rgba(37,99,235,.25));
+}
+
+.card__image { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.card__content {
+  display: grid;
+  grid-template-rows: auto auto auto auto 1fr auto;
+  gap: 12px;
+  padding: 18px 18px 16px;
+}
+
+.card__category {
+  width: max-content;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.card__meta { color: var(--muted); font-size: 12px; }
+
+.card__title {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--text);
+}
+
+.card__link {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  border-radius: 8px;
+}
+.card__link:focus-visible { box-shadow: 0 0 0 3px var(--ring); }
+.card__link:hover { text-decoration: underline; }
+
+.card__desc { color: var(--muted); margin: 0; font-size: 14px; line-height: 1.55; }
+
+.card__author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+  color: var(--text);
+}
+
+.avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; display: block; }
+.author__box { display: grid; }
+.author__name { font-weight: 800; font-size: 16px; }
+.author__role { font-size: 12px; color: var(--muted); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (min-width: 480px) {
+  .card__title { font-size: 22px; }
+  .card__desc { font-size: 15px; }
+}
